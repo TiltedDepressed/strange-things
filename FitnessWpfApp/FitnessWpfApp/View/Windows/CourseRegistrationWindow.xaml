@@ -1,0 +1,35 @@
+﻿<Window x:Class="FitnessWpfApp.View.Windows.CourseRegistrationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FitnessWpfApp.View.Windows"
+        mc:Ignorable="d"
+        Title="CourseRegistrationWindow" Height="500" Width="1024">
+    <Grid Background="MediumSeaGreen">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <UniformGrid Columns="2" Background="MediumSeaGreen">
+            <TextBlock>Тренер:</TextBlock>
+            <ComboBox x:Name="TrainerComboBox" SelectedItem="{Binding Trainer}" DisplayMemberPath="name"></ComboBox>
+            <TextBlock>Курс:</TextBlock>
+            <ComboBox x:Name="CourseComboBox" SelectedItem="{Binding course}" DisplayMemberPath="title"></ComboBox>
+            <TextBlock>Дата начала:</TextBlock>
+            <DatePicker SelectedDate="{Binding CreateDate}"></DatePicker>
+            <TextBlock>Стадия (завершен/в процессе):</TextBlock>
+            <CheckBox IsChecked="{Binding isDone}">Завершен</CheckBox>
+            <TextBlock>Общее количество баллов:</TextBlock>
+            <TextBox x:Name="TxtTotalPoint" Text="{Binding TotalPoint}"></TextBox>
+            <TextBlock>Сертификат:</TextBlock>
+            
+            <Image Source="{Binding Certificateid}"></Image>
+           
+            <TextBlock>Комментарий</TextBlock>
+            <TextBox Text="{Binding comment}"></TextBox>
+        </UniformGrid>
+        <Button x:Name="ImageButton" Content="Выбрать картинку" Click="ImageButton_Click" Grid.Row="1" HorizontalAlignment="Left" Width="230"></Button>
+        <Button Content="Сохранить" Grid.Row="1" x:Name="SaveButton" Click="SaveButton_Click"></Button>
+    </Grid>
+</Window>

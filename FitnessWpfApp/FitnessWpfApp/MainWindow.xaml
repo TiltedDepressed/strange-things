@@ -1,0 +1,47 @@
+﻿<Window x:Class="FitnessWpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FitnessWpfApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="1024">
+    <Grid Background="MediumSeaGreen">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            
+            
+            <Button x:Name="AddButton" Content="Добавить" Click="AddButton_Click"></Button>
+            <Button x:Name="DeleteButton" Content="Удалить" Click="DeleteButton_Click"></Button>
+        </StackPanel>
+        
+        <DataGrid x:Name="DataGridRegistrarion" Grid.Row="1" ColumnWidth="*" AutoGenerateColumns="False" IsReadOnly="True" Background="MediumSeaGreen" SelectionChanged="DataGridRegistrarion_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Курс" Binding="{Binding course.title}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Тренер" Binding="{Binding Trainer.name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата записи" Binding="{Binding createdDate, StringFormat={}{0:dd MMMM yyy}}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Набранный бал" Binding="{Binding TotalPoint}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Прохождение курса" Binding="{Binding IsDoneString}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Комментарий" Binding="{Binding comment}"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Сертификат">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Certificateid}" Height="60"></Image>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="BtnEdit" Content="Редактировать" Click="BtnEdit_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
